@@ -12,6 +12,8 @@
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  padding: 0;
+  list-style: none;
 }
 
 .gallery__item {

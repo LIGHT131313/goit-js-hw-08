@@ -1,3 +1,24 @@
 import Player from '@vimeo/player';
+const throttle = require('lodash.throttle');
 
-console.log(Player);
+const player = new Player('vimeo-player');
+const throttled = throttle((saveViewPosition), 1000);
+
+player.on('timeupdate', throttled)
+
+function saveViewPosition({seconds}) {
+    localStorage.setItem("videoplayer-current-time", JSON.stringify(seconds))
+}
+
+const currentTime = localStorage.getItem("videoplayer-current-time")
+
+player.setCurrentTime(currentTime).catch(function(error) {
+    switch (error.name) {
+        case 'RangeError':
+            console.alert(`${error.name}: the time was less than 0 or greater than the video’s duration`)
+            break;
+        default:
+            console.alert(`${error.name}: some other error occurred`)
+            break;
+    }
+});
