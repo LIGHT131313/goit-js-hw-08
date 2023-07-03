@@ -11,8 +11,6 @@ function preStart() {
         if (parsedInputs) {
             form.email.value = parsedInputs.email || '';
             form.message.value = parsedInputs.message || '';
-        } else {
-            return
         }
     } catch (error) {
         console.log(error.name, error.message);
