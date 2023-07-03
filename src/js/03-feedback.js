@@ -9,8 +9,8 @@ function preStart() {
         const savedInputs = localStorage.getItem(LOCALSTORAGE_KEY);
         const parsedInputs = JSON.parse(savedInputs);    
         if (parsedInputs) {
-            form.email.value = parsedInputs.email;
-            form.message.value = parsedInputs.message;
+            form.email.value = parsedInputs.email || '';
+            form.message.value = parsedInputs.message || '';
         } else {
             return
         }
