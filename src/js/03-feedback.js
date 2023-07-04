@@ -2,7 +2,7 @@ const throttle = require('lodash.throttle');
 
 const form = document.querySelector('.feedback-form');
 const LOCALSTORAGE_KEY = "feedback-form-state";
-const data = {};
+let data = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || {};
 
 function preStart() {    
     try {
